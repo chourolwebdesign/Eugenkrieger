@@ -1,35 +1,64 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Dachboden vorher – vollgestellt">
   <defs>
-    <linearGradient id="dvWall" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#6f6557"/><stop offset="1" stop-color="#564d41"/>
+    <linearGradient id="dv-wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a7f6e"/><stop offset="1" stop-color="#6c6253"/>
     </linearGradient>
-    <linearGradient id="dvFloor" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#564434"/><stop offset="1" stop-color="#3d3025"/>
+    <linearGradient id="dv-roof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5a5043"/><stop offset="1" stop-color="#73685799"/>
     </linearGradient>
+    <linearGradient id="dv-floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6a5440"/><stop offset="1" stop-color="#4a3a2c"/>
+    </linearGradient>
+    <radialGradient id="dv-vig" cx="0.5" cy="0.4" r="0.8">
+      <stop offset="0.5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#16110b" stop-opacity="0.6"/>
+    </radialGradient>
+    <filter id="dv-sh" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
   </defs>
-  <rect width="1200" height="900" fill="url(#dvWall)"/>
-  <!-- sloped roof -->
-  <polygon points="0,0 1200,0 1200,120 600,40 0,360" fill="#4a4238"/>
-  <polygon points="0,360 600,40 1200,120 1200,150 600,80 0,420" fill="#3a342c"/>
-  <!-- beams -->
-  <line x1="600" y1="60" x2="120" y2="620" stroke="#6b5d49" stroke-width="20"/>
-  <line x1="600" y1="60" x2="1080" y2="620" stroke="#6b5d49" stroke-width="20"/>
-  <rect y="620" width="1200" height="280" fill="url(#dvFloor)"/>
-  <!-- roof window (Velux) -->
-  <polygon points="780,150 980,180 980,300 780,260" fill="#94a3aa" stroke="#3a342c" stroke-width="10"/>
-  <!-- old trunk + boxes -->
-  <g stroke="#2f261d" stroke-width="4">
-    <rect x="180" y="500" width="220" height="120" rx="10" fill="#6f4f33"/>
-    <path d="M180 540h220" stroke="#3a2a1c" stroke-width="8"/>
-    <rect x="430" y="470" width="150" height="150" fill="#b07a45"/>
-    <path d="M505 470v150M430 545h150" stroke="#7c5733"/>
-    <rect x="430" y="360" width="130" height="110" fill="#c08a52"/>
+
+  <rect width="1200" height="660" fill="url(#dv-wall)"/>
+  <!-- sloped roof both sides -->
+  <polygon points="0,0 1200,0 1200,90 600,30 0,360" fill="#4f4639"/>
+  <polygon points="0,360 600,30 1200,90 1200,120 600,70 0,420" fill="#3d362b"/>
+  <polygon points="600,30 600,70 0,420 0,360" fill="#453d31"/>
+  <!-- rafters -->
+  <g stroke="#7a6c54" stroke-width="22" stroke-linecap="round">
+    <line x1="600" y1="55" x2="130" y2="610"/><line x1="600" y1="55" x2="1070" y2="610"/>
   </g>
-  <!-- covered furniture (sheet) -->
-  <path d="M640 620c0-120 50-170 140-170s140 50 140 170z" fill="#9a958c" stroke="#6f6a60" stroke-width="4"/>
-  <path d="M660 560c40-20 200-20 240 0" stroke="#7d786e" stroke-width="4" fill="none"/>
-  <!-- scattered -->
-  <circle cx="600" cy="650" r="30" fill="#7a8e58" stroke="#3a2f23" stroke-width="4"/>
-  <rect x="980" y="560" width="90" height="60" rx="8" fill="#8a5b4a" stroke="#3a2f23" stroke-width="4"/>
-  <rect width="1200" height="900" fill="#17130e" opacity="0.2"/>
+  <g stroke="#665a45" stroke-width="10" opacity="0.7">
+    <line x1="300" y1="300" x2="330" y2="660"/><line x1="900" y1="300" x2="870" y2="660"/>
+  </g>
+  <rect y="660" width="1200" height="240" fill="url(#dv-floor)"/>
+  <polygon points="0,660 1200,660 1200,672 0,672" fill="#2f251b" opacity="0.6"/>
+  <g stroke="#3a2d20" stroke-width="2" opacity="0.45"><line x1="0" y1="760" x2="1200" y2="760"/><line x1="0" y1="840" x2="1200" y2="840"/></g>
+
+  <!-- roof window (Velux) -->
+  <polygon points="760,150 980,185 980,310 760,265" fill="#7e8a90" stroke="#3a342c" stroke-width="10"/>
+  <line x1="870" y1="167" x2="870" y2="287" stroke="#3a342c" stroke-width="7"/>
+
+  <!-- shadows -->
+  <ellipse cx="360" cy="700" rx="240" ry="32" fill="#16110b" filter="url(#dv-sh)" opacity="0.55"/>
+  <ellipse cx="800" cy="710" rx="220" ry="30" fill="#16110b" filter="url(#dv-sh)" opacity="0.5"/>
+
+  <!-- old trunk + boxes (left) -->
+  <g stroke="#2a2014" stroke-width="3">
+    <rect x="170" y="520" width="240" height="140" rx="12" fill="#6f4f33"/>
+    <path d="M170 565h240" stroke="#3a2a1c" stroke-width="9"/>
+    <rect x="250" y="490" width="40" height="20" fill="#caa15a"/>
+    <rect x="430" y="480" width="150" height="180" fill="#b9863f"/>
+    <polygon points="430,480 580,480 558,458 452,458" fill="#9c6f34"/>
+    <path d="M505 480v180M438 565h140" stroke="#7c5733"/>
+    <rect x="430" y="360" width="130" height="120" fill="#c79355"/>
+  </g>
+
+  <!-- furniture under dust sheet (center-right) -->
+  <path d="M620 660c0-130 56-185 150-185s150 55 150 185z" fill="#b6b1a6" stroke="#8a857a" stroke-width="3"/>
+  <path d="M640 600c50-24 220-24 270 0" stroke="#9a958a" stroke-width="3" fill="none"/>
+  <path d="M770 475l-150 185M770 475l150 185" stroke="#9a958a" stroke-width="2" opacity="0.5"/>
+
+  <!-- scattered + bags -->
+  <circle cx="600" cy="690" r="30" fill="#7a8e58" stroke="#2a2014" stroke-width="3"/>
+  <path d="M940 660c8-66 44-92 84-92s78 28 84 92z" fill="#3c4750" stroke="#222a30" stroke-width="3"/>
+  <rect x="490" y="700" width="90" height="46" rx="8" fill="#8a5b4a" stroke="#2a2014" stroke-width="3"/>
+
+  <rect width="1200" height="900" fill="url(#dv-vig)"/>
 </svg>

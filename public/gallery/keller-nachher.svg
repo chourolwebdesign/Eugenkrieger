@@ -1,34 +1,57 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Keller nachher – besenrein">
   <defs>
-    <linearGradient id="knWall" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#d8d2c6"/><stop offset="1" stop-color="#c3bcad"/>
+    <linearGradient id="kn-wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e7e1d4"/><stop offset="1" stop-color="#d2cabb"/>
     </linearGradient>
-    <linearGradient id="knFloor" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#9a9183"/><stop offset="1" stop-color="#827a6d"/>
+    <linearGradient id="kn-lwall" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c5bcab"/><stop offset="1" stop-color="#ddd5c5"/>
     </linearGradient>
-    <linearGradient id="knLight" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#fff7e8" stop-opacity="0.8"/><stop offset="1" stop-color="#fff7e8" stop-opacity="0"/>
+    <linearGradient id="kn-floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a89e8c"/><stop offset="1" stop-color="#8f8573"/>
     </linearGradient>
+    <linearGradient id="kn-light" x1="0.6" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#fff8e8" stop-opacity="0.85"/><stop offset="1" stop-color="#fff8e8" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="kn-vig" cx="0.5" cy="0.45" r="0.8">
+      <stop offset="0.6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#7c715a" stop-opacity="0.2"/>
+    </radialGradient>
   </defs>
-  <rect width="1200" height="900" fill="url(#knWall)"/>
-  <rect y="600" width="1200" height="300" fill="url(#knFloor)"/>
-  <rect x="0" y="70" width="1200" height="22" fill="#cfc8ba"/>
-  <!-- window with light -->
-  <rect x="120" y="150" width="180" height="120" fill="#bcd2dd" stroke="#a59c8c" stroke-width="10"/>
-  <line x1="210" y1="150" x2="210" y2="270" stroke="#a59c8c" stroke-width="8"/>
-  <polygon points="130,260 290,260 470,600 -40,600" fill="url(#knLight)"/>
-  <!-- clean floor sheen -->
-  <ellipse cx="600" cy="760" rx="520" ry="60" fill="#ffffff" opacity="0.10"/>
+
+  <rect width="1200" height="660" fill="url(#kn-wall)"/>
+  <polygon points="0,0 160,95 160,705 0,900" fill="url(#kn-lwall)"/>
+  <rect y="660" width="1200" height="240" fill="url(#kn-floor)"/>
+  <polygon points="160,705 1200,660 1200,900 0,900" fill="url(#kn-floor)"/>
+  <polygon points="160,705 1200,660 1200,672 160,717" fill="#7c715a" opacity="0.5"/>
+  <!-- clean tiled floor seams -->
+  <g stroke="#7c715a" stroke-width="2" opacity="0.4">
+    <line x1="160" y1="770" x2="1200" y2="745"/><line x1="120" y1="840" x2="1200" y2="818"/>
+    <line x1="470" y1="700" x2="430" y2="900"/><line x1="800" y1="685" x2="800" y2="900"/>
+  </g>
+
+  <!-- pipe (clean) -->
+  <rect x="160" y="70" width="1040" height="24" fill="#cfc8b9"/>
+
+  <!-- small high window with light -->
+  <rect x="640" y="150" width="200" height="120" fill="#cfe0e7" stroke="#bdb4a3" stroke-width="12"/>
+  <line x1="740" y1="150" x2="740" y2="270" stroke="#bdb4a3" stroke-width="8"/>
+  <polygon points="650,262 830,262 940,660 470,680" fill="url(#kn-light)"/>
+  <ellipse cx="640" cy="780" rx="520" ry="46" fill="#ffffff" opacity="0.12"/>
+
+  <!-- neat plant -->
+  <g>
+    <path d="M250 600h110l-14 84h-82z" fill="#cf6a36"/>
+    <path d="M305 600c-46-16-68-66-42-108 32 12 52 60 42 108z" fill="#4f7d4a"/>
+    <path d="M305 600c48-12 78-54 60-100-36 8-60 52-60 100z" fill="#5e9156"/>
+    <ellipse cx="305" cy="688" rx="100" ry="18" fill="#6f6450" opacity="0.3"/>
+  </g>
+
   <!-- broom leaning (besenrein) -->
   <g>
-    <line x1="900" y1="300" x2="980" y2="600" stroke="#F58220" stroke-width="14" stroke-linecap="round"/>
-    <path d="M955 590l50 18-18 56c-6 18-30 26-44 14l-30-26c-14-12-10-36 8-44z" fill="#F58220"/>
-    <path d="M946 612l44 16" stroke="#0B1E3B" stroke-width="6" opacity="0.5"/>
+    <line x1="980" y1="320" x2="1030" y2="660" stroke="#F58220" stroke-width="15" stroke-linecap="round"/>
+    <path d="M1005 648l52 14-16 60c-5 18-28 26-43 15l-33-26c-15-12-11-37 7-46z" fill="#F58220"/>
+    <path d="M997 672l46 14" stroke="#b0570b" stroke-width="6" opacity="0.6"/>
+    <ellipse cx="1025" cy="672" rx="70" ry="14" fill="#6f6450" opacity="0.3"/>
   </g>
-  <!-- small plant accent -->
-  <g>
-    <rect x="250" y="560" width="50" height="46" rx="6" fill="#b9532a"/>
-    <path d="M275 560c-30-10-46-44-30-70 22 8 34 40 30 70z" fill="#4f7d4a"/>
-    <path d="M275 560c30-6 50-36 40-66-24 4-40 34-40 66z" fill="#5e9156"/>
-  </g>
+
+  <rect width="1200" height="900" fill="url(#kn-vig)"/>
 </svg>
