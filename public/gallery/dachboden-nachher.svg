@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Dachboden nachher – besenrein">
+  <defs>
+    <linearGradient id="dnWall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6e0d4"/><stop offset="1" stop-color="#d2cabb"/>
+    </linearGradient>
+    <linearGradient id="dnFloor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c6a674"/><stop offset="1" stop-color="#ac8b5c"/>
+    </linearGradient>
+    <linearGradient id="dnLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff8ea" stop-opacity="0.9"/><stop offset="1" stop-color="#fff8ea" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#dnWall)"/>
+  <polygon points="0,0 1200,0 1200,120 600,40 0,360" fill="#cfc7b6"/>
+  <polygon points="0,360 600,40 1200,120 1200,150 600,80 0,420" fill="#bfb6a4"/>
+  <line x1="600" y1="60" x2="120" y2="620" stroke="#d8cdb8" stroke-width="20"/>
+  <line x1="600" y1="60" x2="1080" y2="620" stroke="#d8cdb8" stroke-width="20"/>
+  <rect y="620" width="1200" height="280" fill="url(#dnFloor)"/>
+  <g stroke="#9c7c4e" stroke-width="3" opacity="0.5">
+    <line x1="0" y1="700" x2="1200" y2="700"/>
+    <line x1="0" y1="790" x2="1200" y2="790"/>
+  </g>
+  <!-- roof window with bright daylight -->
+  <polygon points="780,150 980,180 980,300 780,260" fill="#d2e2e9" stroke="#bdb4a3" stroke-width="10"/>
+  <polygon points="790,270 970,295 1140,620 560,620" fill="url(#dnLight)"/>
+  <ellipse cx="600" cy="780" rx="520" ry="44" fill="#ffffff" opacity="0.12"/>
+  <!-- broom -->
+  <g>
+    <line x1="300" y1="320" x2="230" y2="600" stroke="#F58220" stroke-width="14" stroke-linecap="round"/>
+    <path d="M205 590l50-16 18 56c6 18-6 38-24 40l-40 4c-18 2-30-18-22-34z" fill="#F58220"/>
+  </g>
+</svg>

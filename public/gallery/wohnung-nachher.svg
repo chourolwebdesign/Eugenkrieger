@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Wohnung nachher – besenrein">
+  <defs>
+    <linearGradient id="wnWall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eee9df"/><stop offset="1" stop-color="#ddd6c9"/>
+    </linearGradient>
+    <linearGradient id="wnFloor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c8a878"/><stop offset="1" stop-color="#b08f60"/>
+    </linearGradient>
+    <linearGradient id="wnLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff8ea" stop-opacity="0.85"/><stop offset="1" stop-color="#fff8ea" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#wnWall)"/>
+  <rect y="610" width="1200" height="290" fill="url(#wnFloor)"/>
+  <!-- floor boards -->
+  <g stroke="#a07e50" stroke-width="3" opacity="0.5">
+    <line x1="0" y1="680" x2="1200" y2="680"/>
+    <line x1="0" y1="760" x2="1200" y2="760"/>
+    <line x1="0" y1="840" x2="1200" y2="840"/>
+  </g>
+  <!-- window with daylight -->
+  <rect x="800" y="120" width="280" height="240" fill="#cfe0e7" stroke="#bdb4a3" stroke-width="14"/>
+  <line x1="940" y1="120" x2="940" y2="360" stroke="#bdb4a3" stroke-width="10"/>
+  <line x1="800" y1="240" x2="1080" y2="240" stroke="#bdb4a3" stroke-width="10"/>
+  <polygon points="810,350 1070,350 1180,610 540,610" fill="url(#wnLight)"/>
+  <ellipse cx="600" cy="770" rx="540" ry="48" fill="#ffffff" opacity="0.12"/>
+  <!-- plant accent -->
+  <g>
+    <rect x="180" y="540" width="60" height="70" rx="8" fill="#b9532a"/>
+    <path d="M210 540c-40-16-58-58-36-92 28 12 44 52 36 92z" fill="#4f7d4a"/>
+    <path d="M210 540c40-10 64-48 50-86-30 8-50 44-50 86z" fill="#5e9156"/>
+    <path d="M210 540c-6-50 10-86 0-120-26 26-22 84 0 120z" fill="#6fa566"/>
+  </g>
+</svg>

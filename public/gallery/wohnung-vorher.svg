@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Wohnung vorher – vollgestellt">
+  <defs>
+    <linearGradient id="wvWall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9a8f86"/><stop offset="1" stop-color="#7f756c"/>
+    </linearGradient>
+    <linearGradient id="wvFloor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6b5847"/><stop offset="1" stop-color="#503f31"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#wvWall)"/>
+  <rect y="610" width="1200" height="290" fill="url(#wvFloor)"/>
+  <!-- window -->
+  <rect x="800" y="120" width="280" height="240" fill="#aab6bb" stroke="#5b5349" stroke-width="14"/>
+  <line x1="940" y1="120" x2="940" y2="360" stroke="#5b5349" stroke-width="10"/>
+  <line x1="800" y1="240" x2="1080" y2="240" stroke="#5b5349" stroke-width="10"/>
+  <!-- old sofa with stuff piled -->
+  <g stroke="#2f261d" stroke-width="4">
+    <rect x="120" y="430" width="380" height="180" rx="18" fill="#7d6b8a"/>
+    <rect x="120" y="370" width="380" height="90" rx="16" fill="#8a779a"/>
+    <rect x="120" y="560" width="380" height="60" rx="10" fill="#6a5877"/>
+  </g>
+  <!-- piled boxes on sofa -->
+  <g stroke="#3a2f23" stroke-width="4">
+    <rect x="180" y="300" width="120" height="90" fill="#c08a52"/>
+    <rect x="300" y="320" width="110" height="70" fill="#b07a45"/>
+  </g>
+  <!-- clutter bags -->
+  <path d="M560 610c8-80 56-110 110-110s100 36 110 110z" fill="#3f4a52" stroke="#262d33" stroke-width="4"/>
+  <path d="M740 610c6-54 40-74 78-74s70 26 76 74z" fill="#566169" stroke="#2c363c" stroke-width="4"/>
+  <!-- floor lamp tipped items -->
+  <circle cx="980" cy="560" r="40" fill="#8a5b4a" stroke="#3a2f23" stroke-width="4"/>
+  <rect x="600" y="560" width="90" height="50" rx="8" fill="#7a8e58" stroke="#3a2f23" stroke-width="4"/>
+  <ellipse cx="600" cy="640" rx="430" ry="30" fill="#1f1813" opacity="0.4"/>
+  <rect width="1200" height="900" fill="#1a1712" opacity="0.12"/>
+</svg>
