@@ -172,6 +172,16 @@ export default function Booking() {
                   className="grid grid-cols-1 gap-6 p-6 sm:p-8 lg:grid-cols-2"
                   noValidate
                 >
+                  {/* Honeypot anti-spam field — hidden from real users */}
+                  <input
+                    type="text"
+                    name="company"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -left-[9999px] h-0 w-0 opacity-0"
+                  />
+
                   {/* Left: date + time */}
                   <div className="space-y-5">
                     <div id="field-date">
