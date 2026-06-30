@@ -85,7 +85,18 @@ export default function ImpressumPage() {
       </section>
 
       <section>
-        <h2 className="text-xl font-semibold text-white">Haftungshinweis</h2>
+        <h2 className="text-xl font-semibold text-white">Haftung für Inhalte</h2>
+        <p className="mt-3">
+          Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte
+          auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach
+          §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht
+          verpflichtet, übermittelte oder gespeicherte fremde Informationen zu
+          überwachen.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-xl font-semibold text-white">Haftung für Links</h2>
         <p className="mt-3">
           Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung
           für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten
@@ -93,11 +104,14 @@ export default function ImpressumPage() {
         </p>
       </section>
 
-      <p className="text-sm text-white/40">
-        Hinweis: Bitte ergänzen Sie dieses Impressum vor Veröffentlichung mit
-        ggf. fehlenden Pflichtangaben (z. B. USt-IdNr., Handelsregister,
-        Berufshaftpflicht).
-      </p>
+      <section>
+        <h2 className="text-xl font-semibold text-white">Urheberrecht</h2>
+        <p className="mt-3">
+          Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen
+          Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind
+          als solche gekennzeichnet.
+        </p>
+      </section>
     </LegalShell>
   );
 }

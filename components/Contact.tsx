@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
@@ -31,6 +32,10 @@ const actions = [
 ];
 
 export default function Contact() {
+  // Google Maps is loaded only after explicit user consent (DSGVO):
+  // the iframe transmits the visitor's IP to Google, so we don't auto-load it.
+  const [mapLoaded, setMapLoaded] = useState(false);
+
   return (
     <section id="kontakt" className="section-pad">
       <div className="container-px">
@@ -126,33 +131,50 @@ export default function Contact() {
           {/* Right: map (branded fallback behind the iframe) */}
           <Reveal delay={0.12}>
             <div className="relative h-full min-h-[26rem] overflow-hidden rounded-[2rem] border border-white/10 bg-navy-800">
-              {/* Fallback shown if the embed is slow or blocked */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-navy-500/40 to-navy-700 p-8 text-center">
-                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange/15 text-orange">
-                  <Icon name="pin" className="h-7 w-7" />
-                </span>
-                <p className="text-white/70">
-                  {site.address.street}
-                  <br />
-                  {site.address.postalCode} {site.address.city}
-                </p>
-                <a
-                  href={site.maps.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary !py-2.5 !text-sm"
-                >
-                  In Google Maps öffnen
-                </a>
-              </div>
-              <iframe
-                title={`Standort von ${site.legalName} in ${site.address.city}`}
-                src={site.maps.embed}
-                className="absolute inset-0 h-full w-full grayscale-[0.2]"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                style={{ border: 0 }}
-              />
+              {/* Consent gate: Google Maps loads only after the user clicks
+                  "Karte laden" — no IP is sent to Google beforehand (DSGVO). */}
+              {!mapLoaded ? (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-navy-500/40 to-navy-700 p-8 text-center">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange/15 text-orange">
+                    <Icon name="pin" className="h-7 w-7" />
+                  </span>
+                  <p className="text-white/70">
+                    {site.address.street}
+                    <br />
+                    {site.address.postalCode} {site.address.city}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setMapLoaded(true)}
+                    className="btn-primary !py-2.5 !text-sm"
+                  >
+                    <Icon name="pin" className="h-4 w-4" />
+                    Karte laden
+                  </button>
+                  <p className="max-w-xs text-[0.7rem] leading-relaxed text-white/40">
+                    Mit dem Laden der Karte akzeptieren Sie die
+                    Datenschutzerklärung von Google. Dabei wird Ihre IP-Adresse
+                    an Google übertragen.{" "}
+                    <a
+                      href={site.maps.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-white"
+                    >
+                      In Google Maps öffnen
+                    </a>
+                  </p>
+                </div>
+              ) : (
+                <iframe
+                  title={`Standort von ${site.legalName} in ${site.address.city}`}
+                  src={site.maps.embed}
+                  className="absolute inset-0 h-full w-full grayscale-[0.2]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  style={{ border: 0 }}
+                />
+              )}
             </div>
           </Reveal>
         </div>
