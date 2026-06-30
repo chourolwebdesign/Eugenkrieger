@@ -114,7 +114,7 @@ export default function BeforeAfter() {
               <span className="text-gradient-orange">sich</span>
             </>
           }
-          subtitle="Ziehen Sie den Regler, um den Unterschied zu sehen. Aus vollgestellt wird besenrein."
+          subtitle="Ziehen Sie den Regler, um den Unterschied zu sehen: Aus vollgestellt wird besenrein. (Beispielhafte Darstellung unserer Leistung.)"
         />
 
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

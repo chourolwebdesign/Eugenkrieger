@@ -6,9 +6,9 @@ import Counter from "./Counter";
 import { site } from "@/lib/site";
 
 const stats = [
-  { value: 500, suffix: "+", label: "Aufträge erledigt" },
-  { value: 15, suffix: " Jahre", label: "Erfahrung" },
+  { value: 0, suffix: " €", label: "Besichtigung & Angebot" },
   { value: 24, suffix: "h", label: "Schnelle Rückmeldung" },
+  { value: 100, suffix: " %", label: "Festpreis-Garantie" },
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;

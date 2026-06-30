@@ -126,54 +126,30 @@ export const processSteps: { step: string; title: string; text: string }[] = [
   },
 ];
 
-export const reviews: {
-  name: string;
-  initials: string;
-  location: string;
-  rating: number;
-  text: string;
-}[] = [
+/**
+ * Honest trust "promises" for a newly founded company (no invented reviews).
+ * Real Google reviews can be added here later as the business grows.
+ */
+export const promises: { icon: string; title: string; text: string }[] = [
   {
-    name: "Sabine M.",
-    initials: "SM",
-    location: "Bornheim",
-    rating: 5,
-    text: "Absolut professionell und sehr freundlich. Die Wohnung meiner Mutter wurde innerhalb eines Tages komplett entrümpelt und besenrein übergeben. Klare Empfehlung!",
+    icon: "euro",
+    title: "Festpreis-Garantie",
+    text: "Sie erhalten vorab ein verbindliches Festpreis-Angebot. Keine versteckten Kosten, keine Nachberechnung.",
   },
   {
-    name: "Thomas K.",
-    initials: "TK",
-    location: "Bonn",
-    rating: 5,
-    text: "Schnelle Besichtigung, fairer Festpreis und alles wurde eingehalten. So stelle ich mir einen zuverlässigen Service vor. Vielen Dank an das ganze Team!",
+    icon: "broom",
+    title: "Besenreine Übergabe",
+    text: "Wir übergeben jede Fläche besenrein – sauber und bereit für den nächsten Schritt.",
   },
   {
-    name: "Andrea L.",
-    initials: "AL",
-    location: "Brühl",
-    rating: 5,
-    text: "Von der ersten Anfrage bis zur Übergabe lief alles reibungslos. Sehr diskret bei der Haushaltsauflösung und absolut termintreu. Top!",
+    icon: "clock",
+    title: "Pünktlich & zuverlässig",
+    text: "Vereinbarte Termine halten wir ein. Auf unser Wort können Sie sich verlassen.",
   },
   {
-    name: "Mehmet Y.",
-    initials: "MY",
-    location: "Köln",
-    rating: 5,
-    text: "Kurzfristiger Termin war kein Problem. Keller und Garage in wenigen Stunden geräumt. Preis-Leistung hervorragend, gerne wieder.",
-  },
-  {
-    name: "Petra H.",
-    initials: "PH",
-    location: "Wesseling",
-    rating: 5,
-    text: "Ehrlich, pünktlich und sehr sorgfältig. Man merkt, dass hier mit Herz und Verstand gearbeitet wird. Absolut empfehlenswert.",
-  },
-  {
-    name: "Jens R.",
-    initials: "JR",
-    location: "Alfter",
-    rating: 5,
-    text: "Büroauflösung perfekt organisiert. Alles fachgerecht entsorgt, nichts blieb liegen. Kommunikation jederzeit freundlich und klar.",
+    icon: "smile",
+    title: "Faire, ehrliche Beratung",
+    text: "Kostenlose Besichtigung und eine ehrliche Einschätzung – ohne Druck und ohne Verkaufsmasche.",
   },
 ];
 

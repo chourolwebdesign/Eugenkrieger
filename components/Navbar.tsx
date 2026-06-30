@@ -10,7 +10,7 @@ const links = [
   { href: "#leistungen", label: "Leistungen" },
   { href: "#ablauf", label: "Ablauf" },
   { href: "#galerie", label: "Vorher / Nachher" },
-  { href: "#bewertungen", label: "Bewertungen" },
+  { href: "#versprechen", label: "Versprechen" },
   { href: "#faq", label: "FAQ" },
   { href: "#kontakt", label: "Kontakt" },
 ];

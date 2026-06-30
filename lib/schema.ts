@@ -4,7 +4,7 @@
  * Gemini, Claude and Perplexity can read the business clearly.
  */
 import { site } from "./site";
-import { services, faqs, reviews } from "./content";
+import { services, faqs } from "./content";
 
 const businessId = `${site.url}/#business`;
 
@@ -48,23 +48,6 @@ export function localBusinessSchema() {
       dayOfWeek: o.days,
       opens: o.opens,
       closes: o.closes,
-    })),
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: site.ratingValue,
-      reviewCount: site.reviewCount,
-      bestRating: "5",
-      worstRating: "1",
-    },
-    review: reviews.slice(0, 4).map((r) => ({
-      "@type": "Review",
-      author: { "@type": "Person", name: r.name },
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: r.rating,
-        bestRating: "5",
-      },
-      reviewBody: r.text,
     })),
     makesOffer: services.map((s) => ({
       "@type": "Offer",

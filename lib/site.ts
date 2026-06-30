@@ -72,8 +72,6 @@ export const site = {
     "Rhein-Sieg-Kreis",
     "Rhein-Erft-Kreis",
   ],
-  ratingValue: "5.0",
-  reviewCount: "47",
 } as const;
 
 export type Site = typeof site;
