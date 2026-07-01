@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1E3B"/>
+      <stop offset="1" stop-color="#071226"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.8" cy="0.2" r="0.6">
+      <stop offset="0" stop-color="#F58220" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#F58220" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(80,80)">
+    <rect width="64" height="64" rx="14" fill="#F58220"/>
+    <text x="32" y="44" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="800" fill="#ffffff" text-anchor="middle">EK</text>
+    <text x="84" y="28" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Eugen Krieger</text>
+    <text x="84" y="54" font-family="Arial, Helvetica, sans-serif" font-size="15" letter-spacing="3" fill="#F9A04B">ENTRÜMPELUNG &amp; SERVICE</text>
+  </g>
+  <text x="80" y="330" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="800" fill="#ffffff">Wir schaffen</text>
+  <text x="80" y="430" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="800" fill="#F58220">Platz.</text>
+  <text x="80" y="510" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#C2CEDE">Entrümpelung · Haushaltsauflösung · Umzüge in Bornheim &amp; Umgebung</text>
+  <g transform="translate(80,545)" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">
+    <text x="0" y="20">✓ Festpreis</text>
+    <text x="220" y="20">✓ Kostenlose Besichtigung</text>
+    <text x="600" y="20">✓ Besenrein</text>
+    <text x="820" y="20">☎ 0176 84043191</text>
+  </g>
+</svg>

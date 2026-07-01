@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Keller vorher – vollgestellt">
+  <defs>
+    <linearGradient id="kv-wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c7568"/><stop offset="1" stop-color="#615a4e"/>
+    </linearGradient>
+    <linearGradient id="kv-lwall" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4c463c"/><stop offset="1" stop-color="#655e51"/>
+    </linearGradient>
+    <linearGradient id="kv-floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#534b41"/><stop offset="1" stop-color="#3a342c"/>
+    </linearGradient>
+    <radialGradient id="kv-vig" cx="0.5" cy="0.4" r="0.78">
+      <stop offset="0.5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#15110b" stop-opacity="0.62"/>
+    </radialGradient>
+    <filter id="kv-sh" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+
+  <rect width="1200" height="660" fill="url(#kv-wall)"/>
+  <polygon points="0,0 160,95 160,705 0,900" fill="url(#kv-lwall)"/>
+  <rect y="660" width="1200" height="240" fill="url(#kv-floor)"/>
+  <polygon points="160,705 1200,660 1200,900 0,900" fill="url(#kv-floor)"/>
+  <!-- concrete seams -->
+  <g stroke="#2f2a23" stroke-width="2" opacity="0.4">
+    <line x1="160" y1="320" x2="1200" y2="320"/><line x1="160" y1="500" x2="1200" y2="500"/>
+    <line x1="500" y1="0" x2="500" y2="660"/><line x1="900" y1="0" x2="900" y2="660"/>
+  </g>
+  <!-- overhead pipe + vertical pipe -->
+  <rect x="160" y="70" width="1040" height="28" fill="#8a8273"/>
+  <rect x="160" y="70" width="1040" height="8" fill="#a59c8b" opacity="0.6"/>
+  <rect x="1040" y="70" width="26" height="590" fill="#8a8273"/>
+
+  <!-- small high window -->
+  <rect x="640" y="150" width="200" height="120" fill="#7e8a90" stroke="#3a352c" stroke-width="12"/>
+  <line x1="740" y1="150" x2="740" y2="270" stroke="#3a352c" stroke-width="8"/>
+
+  <!-- floor shadows -->
+  <ellipse cx="370" cy="700" rx="250" ry="34" fill="#15110b" filter="url(#kv-sh)" opacity="0.6"/>
+  <ellipse cx="820" cy="720" rx="220" ry="32" fill="#15110b" filter="url(#kv-sh)" opacity="0.55"/>
+
+  <!-- metal shelving with junk (left) -->
+  <g stroke="#2a251e" stroke-width="4">
+    <rect x="170" y="300" width="260" height="380" fill="none" stroke="#4f4738"/>
+    <line x1="170" y1="430" x2="430" y2="430"/><line x1="170" y1="560" x2="430" y2="560"/>
+    <rect x="186" y="330" width="110" height="90" fill="#c08a52"/>
+    <rect x="304" y="350" width="110" height="70" fill="#a9743f"/>
+    <rect x="200" y="460" width="120" height="90" fill="#7a8e58"/>
+    <rect x="330" y="470" width="90" height="80" fill="#8a5b4a"/>
+    <rect x="190" y="590" width="220" height="80" fill="#5c6f86"/>
+  </g>
+
+  <!-- stacked boxes (center) -->
+  <g stroke="#2f2418" stroke-width="3">
+    <rect x="500" y="500" width="170" height="160" fill="#b9863f"/>
+    <polygon points="500,500 670,500 645,475 525,475" fill="#9c6f34"/>
+    <path d="M585 500v160M510 580h150" stroke="#7c5733"/>
+    <rect x="520" y="370" width="140" height="130" fill="#c79355"/>
+    <path d="M590 370v130" stroke="#8a5f32"/>
+  </g>
+
+  <!-- old chair -->
+  <g fill="#5d4b38" stroke="#2a251e" stroke-width="4">
+    <rect x="720" y="470" width="22" height="190"/>
+    <rect x="860" y="470" width="22" height="190"/>
+    <rect x="712" y="455" width="178" height="26"/>
+    <rect x="712" y="320" width="26" height="140"/>
+  </g>
+
+  <!-- bags -->
+  <path d="M920 670c8-72 48-100 92-100s88 30 92 100z" fill="#3c4750" stroke="#222a30" stroke-width="3"/>
+
+  <!-- ladder -->
+  <g stroke="#9a7b4a" stroke-width="10">
+    <line x1="980" y1="300" x2="1010" y2="660"/><line x1="1060" y1="300" x2="1010" y2="660"/>
+    <line x1="996" y1="390" x2="1044" y2="390"/><line x1="1002" y1="480" x2="1038" y2="480"/><line x1="1006" y1="570" x2="1030" y2="570"/>
+  </g>
+
+  <g fill="#15110b" opacity="0.4"><circle cx="640" cy="780" r="6"/><circle cx="480" cy="800" r="5"/><circle cx="800" cy="790" r="6"/></g>
+  <rect width="1200" height="900" fill="url(#kv-vig)"/>
+</svg>

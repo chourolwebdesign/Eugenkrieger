@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Wohnzimmer vorher – vollgestellt">
+  <defs>
+    <linearGradient id="wv-wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b9a89a"/><stop offset="1" stop-color="#9c8b7c"/>
+    </linearGradient>
+    <linearGradient id="wv-lwall" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6f6256"/><stop offset="1" stop-color="#8a7c6e"/>
+    </linearGradient>
+    <linearGradient id="wv-floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a6450"/><stop offset="1" stop-color="#5b4838"/>
+    </linearGradient>
+    <radialGradient id="wv-vig" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0.55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#1c140d" stop-opacity="0.55"/>
+    </radialGradient>
+    <filter id="wv-sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+
+  <!-- room shell with perspective -->
+  <rect width="1200" height="640" fill="url(#wv-wall)"/>
+  <polygon points="0,0 150,90 150,690 0,900" fill="url(#wv-lwall)"/>
+  <rect y="640" width="1200" height="260" fill="url(#wv-floor)"/>
+  <polygon points="150,690 1200,640 1200,900 0,900" fill="url(#wv-floor)"/>
+  <!-- skirting + floor seams -->
+  <polygon points="150,690 1200,640 1200,652 150,702" fill="#3f3024" opacity="0.6"/>
+  <g stroke="#4a3a2c" stroke-width="2" opacity="0.4">
+    <line x1="150" y1="760" x2="1200" y2="735"/><line x1="120" y1="840" x2="1200" y2="815"/>
+  </g>
+
+  <!-- window with dull daylight -->
+  <rect x="820" y="120" width="300" height="250" rx="6" fill="#8f9ca1" stroke="#5b5045" stroke-width="16"/>
+  <line x1="970" y1="120" x2="970" y2="370" stroke="#5b5045" stroke-width="11"/>
+  <line x1="820" y1="245" x2="1120" y2="245" stroke="#5b5045" stroke-width="11"/>
+
+  <!-- shadows on floor -->
+  <ellipse cx="380" cy="690" rx="280" ry="38" fill="#241a12" filter="url(#wv-sh)" opacity="0.55"/>
+  <ellipse cx="760" cy="720" rx="220" ry="34" fill="#241a12" filter="url(#wv-sh)" opacity="0.5"/>
+
+  <!-- old sofa -->
+  <g stroke="#241a12" stroke-width="3">
+    <rect x="150" y="470" width="430" height="200" rx="22" fill="#6e5d79"/>
+    <rect x="150" y="395" width="430" height="100" rx="20" fill="#7d6a8a"/>
+    <rect x="150" y="600" width="430" height="80" rx="14" fill="#5d4d68"/>
+    <rect x="175" y="430" width="170" height="90" rx="16" fill="#8a779a"/>
+    <rect x="385" y="430" width="170" height="90" rx="16" fill="#8a779a"/>
+    <ellipse cx="365" cy="500" rx="200" ry="40" fill="#ffffff" opacity="0.04"/>
+  </g>
+  <!-- boxes piled on sofa -->
+  <g stroke="#2f2418" stroke-width="3">
+    <rect x="200" y="300" width="140" height="100" fill="#c79355"/>
+    <polygon points="200,300 340,300 320,278 220,278" fill="#a9743f"/>
+    <path d="M270 300v100M225 350h90" stroke="#8a5f32" stroke-width="3"/>
+    <rect x="350" y="320" width="120" height="80" fill="#b9863f"/>
+    <path d="M410 320v80" stroke="#8a5f32"/>
+  </g>
+
+  <!-- floor lamp (leaning) -->
+  <g stroke="#2f2418" stroke-width="6">
+    <line x1="650" y1="350" x2="690" y2="640"/>
+  </g>
+  <path d="M620 320h80l-18 70h-44z" fill="#d9c08c" stroke="#2f2418" stroke-width="3"/>
+
+  <!-- clutter bags -->
+  <path d="M640 670c10-95 60-130 118-130s108 42 116 130z" fill="#3c4750" stroke="#222a30" stroke-width="3"/>
+  <path d="M650 670c30-30 200-30 232 0" stroke="#2a3238" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M820 672c8-58 42-80 80-80s74 28 80 80z" fill="#566169" stroke="#2c363c" stroke-width="3"/>
+
+  <!-- scattered items -->
+  <circle cx="560" cy="690" r="32" fill="#7a8e58" stroke="#2f2418" stroke-width="3"/>
+  <rect x="980" y="600" width="110" height="62" rx="10" fill="#8a5b4a" stroke="#2f2418" stroke-width="3"/>
+  <rect x="430" y="700" width="90" height="46" rx="8" fill="#5c6f86" stroke="#2f2418" stroke-width="3"/>
+
+  <!-- dust / mess specks -->
+  <g fill="#2a1f16" opacity="0.35">
+    <circle cx="720" cy="780" r="6"/><circle cx="560" cy="800" r="5"/><circle cx="900" cy="760" r="7"/><circle cx="300" cy="800" r="6"/>
+  </g>
+
+  <rect width="1200" height="900" fill="url(#wv-vig)"/>
+</svg>
