@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Calendar from "./Calendar";
+import BookingSuccess from "./BookingSuccess";
+import { FloatingInput, FloatingTextarea } from "./Field";
 import SectionHeading from "../SectionHeading";
 import Reveal from "../Reveal";
 import Icon from "../Icon";
@@ -88,8 +90,16 @@ export default function Booking() {
 
     setStatus("submitting");
     setErrorMsg("");
+
+    // Never let the button hang forever: abort after 25s.
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 25000);
     try {
-      const res = await fetch("/api/booking", { method: "POST", body: fd });
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        body: fd,
+        signal: controller.signal,
+      });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data?.error || "Senden fehlgeschlagen.");
       setStatus("success");
@@ -98,15 +108,16 @@ export default function Booking() {
     } catch (err) {
       setStatus("error");
       setErrorMsg(
-        err instanceof Error
-          ? err.message
-          : "Es ist ein Fehler aufgetreten. Bitte rufen Sie uns an.",
+        err instanceof Error && err.name === "AbortError"
+          ? "Zeitüberschreitung. Bitte prüfen Sie Ihre Verbindung oder rufen Sie uns an."
+          : err instanceof Error
+            ? err.message
+            : "Es ist ein Fehler aufgetreten. Bitte rufen Sie uns an.",
       );
+    } finally {
+      clearTimeout(timeout);
     }
   }
-
-  const inputBase =
-    "w-full rounded-2xl border bg-white/[0.04] px-4 py-3.5 text-white placeholder-white/35 outline-none transition-colors focus:border-orange focus:bg-white/[0.06]";
 
   return (
     <section id="termin" className="section-pad scroll-mt-24">
@@ -128,41 +139,7 @@ export default function Booking() {
 
             <AnimatePresence mode="wait">
               {status === "success" ? (
-                <motion.div
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center gap-5 px-6 py-20 text-center"
-                >
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 14 }}
-                    className="flex h-20 w-20 items-center justify-center rounded-full bg-orange text-white shadow-glow"
-                  >
-                    <Icon name="check" className="h-10 w-10" />
-                  </motion.span>
-                  <h3 className="text-3xl font-bold text-white">
-                    Vielen Dank für Ihre Anfrage!
-                  </h3>
-                  <p className="max-w-md text-white/65">
-                    Ihre Terminanfrage ist bei uns eingegangen. Wir melden uns
-                    schnellstmöglich telefonisch oder per E-Mail zur Bestätigung.
-                  </p>
-                  <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-                    <a href={site.phone.href} className="btn-secondary">
-                      <Icon name="phone" className="h-5 w-5" />
-                      {site.phone.display}
-                    </a>
-                    <button
-                      type="button"
-                      onClick={() => setStatus("idle")}
-                      className="btn-primary"
-                    >
-                      Weitere Anfrage senden
-                    </button>
-                  </div>
-                </motion.div>
+                <BookingSuccess onReset={() => setStatus("idle")} />
               ) : (
                 <motion.form
                   key="form"
@@ -224,21 +201,16 @@ export default function Booking() {
                     </div>
                   </div>
 
-                  {/* Right: details */}
+                  {/* Right: details — premium floating-label fields */}
                   <div className="space-y-4">
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div id="field-name">
-                        <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-white/80">
-                          Name *
-                        </label>
-                        <input
+                        <FloatingInput
                           id="name"
                           name="name"
+                          label="Name *"
                           autoComplete="name"
-                          placeholder="Max Mustermann"
-                          className={`${inputBase} ${
-                            fieldErrors.name ? "border-orange/60" : "border-white/10"
-                          }`}
+                          error={fieldErrors.name}
                         />
                         {fieldErrors.name && (
                           <p className="mt-1 text-xs text-orange-300">
@@ -247,18 +219,13 @@ export default function Booking() {
                         )}
                       </div>
                       <div id="field-phone">
-                        <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-white/80">
-                          Telefon *
-                        </label>
-                        <input
+                        <FloatingInput
                           id="phone"
                           name="phone"
                           type="tel"
+                          label="Telefon *"
                           autoComplete="tel"
-                          placeholder="0176 84043191"
-                          className={`${inputBase} ${
-                            fieldErrors.phone ? "border-orange/60" : "border-white/10"
-                          }`}
+                          error={fieldErrors.phone}
                         />
                         {fieldErrors.phone && (
                           <p className="mt-1 text-xs text-orange-300">
@@ -269,18 +236,13 @@ export default function Booking() {
                     </div>
 
                     <div id="field-email">
-                      <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-white/80">
-                        E-Mail
-                      </label>
-                      <input
+                      <FloatingInput
                         id="email"
                         name="email"
                         type="email"
+                        label="E-Mail"
                         autoComplete="email"
-                        placeholder="max@beispiel.de"
-                        className={`${inputBase} ${
-                          fieldErrors.email ? "border-orange/60" : "border-white/10"
-                        }`}
+                        error={fieldErrors.email}
                       />
                       {fieldErrors.email && (
                         <p className="mt-1 text-xs text-orange-300">
@@ -289,55 +251,42 @@ export default function Booking() {
                       )}
                     </div>
 
-                    <div>
-                      <label htmlFor="address" className="mb-1.5 block text-sm font-medium text-white/80">
-                        Adresse des Objekts
-                      </label>
-                      <input
-                        id="address"
-                        name="address"
-                        autoComplete="street-address"
-                        placeholder="Straße, PLZ, Ort"
-                        className={`${inputBase} border-white/10`}
-                      />
-                    </div>
+                    <FloatingInput
+                      id="address"
+                      name="address"
+                      label="Adresse des Objekts"
+                      autoComplete="street-address"
+                    />
 
-                    <div>
-                      <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-white/80">
+                    <div className="relative">
+                      <select
+                        id="service"
+                        value={service}
+                        onChange={(e) => setService(e.target.value)}
+                        aria-label="Art der Leistung"
+                        className="w-full appearance-none rounded-2xl border border-white/10 bg-white/[0.04] px-4 pb-2 pt-6 text-white outline-none transition-all duration-200 focus:border-orange focus:bg-white/[0.07]"
+                      >
+                        {bookingServiceOptions.map((o) => (
+                          <option key={o} value={o} className="bg-navy text-white">
+                            {o}
+                          </option>
+                        ))}
+                      </select>
+                      <span className="pointer-events-none absolute left-4 top-2 z-10 text-xs font-medium text-white/45">
                         Art der Leistung
-                      </label>
-                      <div className="relative">
-                        <select
-                          id="service"
-                          value={service}
-                          onChange={(e) => setService(e.target.value)}
-                          className={`${inputBase} appearance-none border-white/10 pr-10`}
-                        >
-                          {bookingServiceOptions.map((o) => (
-                            <option key={o} value={o} className="bg-navy text-white">
-                              {o}
-                            </option>
-                          ))}
-                        </select>
-                        <Icon
-                          name="chevron"
-                          className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-white/50"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="description" className="mb-1.5 block text-sm font-medium text-white/80">
-                        Beschreibung
-                      </label>
-                      <textarea
-                        id="description"
-                        name="description"
-                        rows={3}
-                        placeholder="z. B. 3-Zimmer-Wohnung im 2. OG, Keller inklusive …"
-                        className={`${inputBase} resize-none border-white/10`}
+                      </span>
+                      <Icon
+                        name="chevron"
+                        className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-white/50"
                       />
                     </div>
+
+                    <FloatingTextarea
+                      id="description"
+                      name="description"
+                      rows={3}
+                      label="Beschreibung Ihres Anliegens"
+                    />
 
                     {/* Photo upload */}
                     <div>

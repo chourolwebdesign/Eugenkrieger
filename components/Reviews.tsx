@@ -13,7 +13,10 @@ import { site } from "@/lib/site";
  */
 export default function Reviews() {
   return (
-    <section id="versprechen" className="section-pad">
+    <section
+      id="versprechen"
+      className="section-pad bg-[radial-gradient(ellipse_at_bottom,_rgba(245,130,32,0.06),_transparent_60%)]"
+    >
       <div className="container-px">
         <SectionHeading
           eyebrow="Unser Versprechen"

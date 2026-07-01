@@ -6,6 +6,34 @@ export const dynamic = "force-dynamic";
 
 const MAX_PHOTO_BYTES = 5 * 1024 * 1024;
 const MAX_PHOTOS = 6;
+const MAX_BODY_BYTES = 35 * 1024 * 1024; // hard cap on the whole request
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Best-effort in-memory rate limiter (per instance). Blocks obvious abuse;
+// Vercel/CDN provides the primary DDoS protection layer.
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const rateHits = new Map<string, number[]>();
+
+function clientIp(req: Request): string {
+  const xff = req.headers.get("x-forwarded-for");
+  return (
+    (xff ? xff.split(",")[0]!.trim() : "") ||
+    req.headers.get("x-real-ip") ||
+    "unknown"
+  );
+}
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (rateHits.get(ip) || []).filter(
+    (t) => now - t < RATE_WINDOW_MS,
+  );
+  recent.push(now);
+  rateHits.set(ip, recent);
+  if (rateHits.size > 5000) rateHits.clear(); // opportunistic cleanup
+  return recent.length > RATE_LIMIT;
+}
 
 function esc(v: unknown) {
   return String(v ?? "")
@@ -80,6 +108,23 @@ function buildText(b: Booking) {
 }
 
 export async function POST(req: Request) {
+  // 1) Rate limiting
+  if (isRateLimited(clientIp(req))) {
+    return NextResponse.json(
+      { error: "Zu viele Anfragen. Bitte versuchen Sie es später erneut." },
+      { status: 429, headers: { "Retry-After": "600" } },
+    );
+  }
+
+  // 2) Body-size guard (defends against oversized uploads)
+  const len = Number(req.headers.get("content-length") || 0);
+  if (len > MAX_BODY_BYTES) {
+    return NextResponse.json(
+      { error: "Die Anfrage ist zu groß." },
+      { status: 413 },
+    );
+  }
+
   let form: FormData;
   try {
     form = await req.formData();
@@ -106,6 +151,14 @@ export async function POST(req: Request) {
   if (!booking.name || !booking.phone || !booking.date || !booking.time) {
     return NextResponse.json(
       { error: "Bitte füllen Sie alle Pflichtfelder aus." },
+      { status: 400 },
+    );
+  }
+
+  // Server-side email validation (defense in depth — never trust the client)
+  if (booking.email && !EMAIL_RE.test(booking.email)) {
+    return NextResponse.json(
+      { error: "Bitte geben Sie eine gültige E-Mail-Adresse an." },
       { status: 400 },
     );
   }
@@ -162,8 +215,13 @@ export async function POST(req: Request) {
         { status: 502 },
       );
     }
+  } else if (process.env.NODE_ENV === "production") {
+    // Misconfiguration in production: warn WITHOUT logging personal data.
+    console.warn(
+      "[BOOKING] RESEND_API_KEY not set — booking accepted but not delivered.",
+    );
   } else {
-    // No email provider configured — log so nothing is lost in dev/demo.
+    // Development/demo: log details locally so nothing is lost.
     console.info(
       "[BOOKING] (no email provider configured)\n" + buildText(booking),
       attachments.length ? `\n(${attachments.length} photo attachment(s))` : "",

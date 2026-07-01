@@ -10,7 +10,10 @@ export default function Services() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="leistungen" className="section-pad">
+    <section
+      id="leistungen"
+      className="section-pad bg-[radial-gradient(ellipse_at_top,_rgba(27,56,102,0.22),_transparent_60%)]"
+    >
       <div className="container-px">
         <SectionHeading
           eyebrow="Unsere Leistungen"
@@ -30,13 +33,19 @@ export default function Services() {
               <motion.article
                 whileHover={reduce ? undefined : { y: -8 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="group relative h-full overflow-hidden rounded-4xl border border-white/10 bg-white/[0.04] p-7 transition-colors hover:border-orange/40"
+                className="group relative h-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-7 transition-colors hover:border-orange/40"
               >
                 {/* Glow on hover */}
                 <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-orange/20 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+                {/* Top accent line on hover */}
+                <span className="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-orange to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                {/* Editorial index watermark */}
+                <span className="pointer-events-none absolute right-5 top-3 select-none font-display text-6xl font-black text-white/[0.05] transition-colors duration-500 group-hover:text-orange/10">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
 
                 <div className="relative flex h-full flex-col">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange to-orange-500 text-white shadow-glow">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange to-orange-500 text-white shadow-glow transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
                     <Icon name={s.icon as IconName} className="h-7 w-7" />
                   </span>
 

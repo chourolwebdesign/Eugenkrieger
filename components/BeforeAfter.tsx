@@ -28,10 +28,10 @@ function CompareCard({
   }, []);
 
   return (
-    <div className="group relative overflow-hidden rounded-4xl border border-white/10 bg-navy-800">
+    <div className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-navy-800 transition-all duration-500 hover:border-orange/30 hover:shadow-premium">
       <div
         ref={ref}
-        className="relative aspect-[4/3] w-full cursor-ew-resize select-none touch-none"
+        className="relative aspect-[4/3] w-full cursor-ew-resize select-none touch-none [&_img]:transition-transform [&_img]:duration-[1200ms] [&_img]:ease-out group-hover:[&_img]:scale-[1.05]"
         onPointerDown={(e) => {
           dragging.current = true;
           (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
