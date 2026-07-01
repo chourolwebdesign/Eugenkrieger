@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import Icon from "./Icon";
 import Counter from "./Counter";
+import Magnetic from "./Magnetic";
 import { site } from "@/lib/site";
 
 const stats = [
@@ -76,18 +77,22 @@ export default function Hero() {
             variants={item}
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
-            <a href="#termin" className="btn-primary group">
-              <Icon name="check" className="h-5 w-5" />
-              Kostenloses Angebot
-              <Icon
-                name="arrowRight"
-                className="h-5 w-5 transition-transform group-hover:translate-x-1"
-              />
-            </a>
-            <a href="#termin" className="btn-secondary">
-              <Icon name="calendar" className="h-5 w-5" />
-              Termin vereinbaren
-            </a>
+            <Magnetic className="inline-flex">
+              <a href="#termin" className="btn-primary group w-full">
+                <Icon name="check" className="h-5 w-5" />
+                Kostenloses Angebot
+                <Icon
+                  name="arrowRight"
+                  className="h-5 w-5 transition-transform group-hover:translate-x-1"
+                />
+              </a>
+            </Magnetic>
+            <Magnetic className="inline-flex">
+              <a href="#termin" className="btn-secondary w-full">
+                <Icon name="calendar" className="h-5 w-5" />
+                Termin vereinbaren
+              </a>
+            </Magnetic>
           </motion.div>
 
           <motion.div

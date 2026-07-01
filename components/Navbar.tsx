@@ -65,7 +65,7 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-white/75 transition-colors hover:bg-white/5 hover:text-white"
+                className="nav-link rounded-full px-4 py-2 text-sm font-medium text-white/75 transition-colors hover:text-white"
               >
                 {l.label}
               </a>

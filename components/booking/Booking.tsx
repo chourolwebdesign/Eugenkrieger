@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Calendar from "./Calendar";
+import BookingSuccess from "./BookingSuccess";
 import SectionHeading from "../SectionHeading";
 import Reveal from "../Reveal";
 import Icon from "../Icon";
@@ -88,8 +89,16 @@ export default function Booking() {
 
     setStatus("submitting");
     setErrorMsg("");
+
+    // Never let the button hang forever: abort after 25s.
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 25000);
     try {
-      const res = await fetch("/api/booking", { method: "POST", body: fd });
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        body: fd,
+        signal: controller.signal,
+      });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data?.error || "Senden fehlgeschlagen.");
       setStatus("success");
@@ -98,10 +107,14 @@ export default function Booking() {
     } catch (err) {
       setStatus("error");
       setErrorMsg(
-        err instanceof Error
-          ? err.message
-          : "Es ist ein Fehler aufgetreten. Bitte rufen Sie uns an.",
+        err instanceof Error && err.name === "AbortError"
+          ? "Zeitüberschreitung. Bitte prüfen Sie Ihre Verbindung oder rufen Sie uns an."
+          : err instanceof Error
+            ? err.message
+            : "Es ist ein Fehler aufgetreten. Bitte rufen Sie uns an.",
       );
+    } finally {
+      clearTimeout(timeout);
     }
   }
 
@@ -128,41 +141,7 @@ export default function Booking() {
 
             <AnimatePresence mode="wait">
               {status === "success" ? (
-                <motion.div
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center gap-5 px-6 py-20 text-center"
-                >
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 14 }}
-                    className="flex h-20 w-20 items-center justify-center rounded-full bg-orange text-white shadow-glow"
-                  >
-                    <Icon name="check" className="h-10 w-10" />
-                  </motion.span>
-                  <h3 className="text-3xl font-bold text-white">
-                    Vielen Dank für Ihre Anfrage!
-                  </h3>
-                  <p className="max-w-md text-white/65">
-                    Ihre Terminanfrage ist bei uns eingegangen. Wir melden uns
-                    schnellstmöglich telefonisch oder per E-Mail zur Bestätigung.
-                  </p>
-                  <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-                    <a href={site.phone.href} className="btn-secondary">
-                      <Icon name="phone" className="h-5 w-5" />
-                      {site.phone.display}
-                    </a>
-                    <button
-                      type="button"
-                      onClick={() => setStatus("idle")}
-                      className="btn-primary"
-                    >
-                      Weitere Anfrage senden
-                    </button>
-                  </div>
-                </motion.div>
+                <BookingSuccess onReset={() => setStatus("idle")} />
               ) : (
                 <motion.form
                   key="form"
