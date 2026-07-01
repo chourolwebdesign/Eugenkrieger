@@ -10,7 +10,10 @@ export default function Services() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="leistungen" className="section-pad">
+    <section
+      id="leistungen"
+      className="section-pad bg-[radial-gradient(ellipse_at_top,_rgba(27,56,102,0.22),_transparent_60%)]"
+    >
       <div className="container-px">
         <SectionHeading
           eyebrow="Unsere Leistungen"
