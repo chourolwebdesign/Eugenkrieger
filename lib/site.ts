@@ -24,7 +24,7 @@ export const site = {
     // wa.me requires international format without "+" or spaces
     href: "https://wa.me/4917684043191",
   },
-  email: "eugen_krieger@gmx.de",
+  email: "eugenkrieger.entruempelung@gmail.com",
   address: {
     street: "Herderstraße 91",
     postalCode: "53332",

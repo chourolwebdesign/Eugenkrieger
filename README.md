@@ -49,7 +49,7 @@ Bookings are sent to the owner by e-mail through the `/api/booking` route.
 3. Fill in:
    ```
    RESEND_API_KEY=re_xxxxxxxx
-   BOOKING_NOTIFY_EMAIL=eugen_krieger@gmx.de
+   BOOKING_NOTIFY_EMAIL=eugenkrieger.entruempelung@gmail.com
    BOOKING_FROM_EMAIL=buchung@deine-domain.de
    ```
 
